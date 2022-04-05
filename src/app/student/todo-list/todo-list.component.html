@@ -1,0 +1,44 @@
+<!--Division for GeeksForGeeks heading-->
+<div class="container-fluid">
+	<div class="row bg-success justify-content-center
+			align-items-center" style="height:80px">
+		<div class="col-3"></div>
+		<div class="col-6 text-light h2">
+			TO-DO ListAPP
+		</div>
+	</div>
+
+	
+	<div class="row justify-content-center align-items-center" style="height:80px;">
+		<div class="col-3 d-none col-md-3 d-md-inline"></div>
+		<div class="col-12 ">
+
+        <form [formGroup]="newTodoForm" (ngSubmit)="addTask()">
+            <input ngModel type="text" formControlName="todoItem"
+                 value="" class="col-7"
+                     style="width:300px;">
+			<div class="col-1"></div>
+			<button	class="btn btn-primary">
+				ADD TASK
+			</button>
+         </form>
+
+			
+		</div>
+
+		<div class="col-3 d-none col-md-3 d-md-block"></div>
+	</div>
+
+    <div class="row">
+        <div>
+            <div class="flex col-4 items-center" *ngFor= "let value of taskList">
+                <p class="w-full text-grey-darkest" [ngClass]="{'line-through': value.completed}">{{value.name}}</p>
+                <button
+                    class="flex-no-shrink p-2 col-4 mr-2 border-2 rounded  text-green border-green hover:bg-green" (click)="markDone(value)">Done</button>
+                <button
+                    class="flex-no-shrink p-2 col-2 border-2 rounded text-red border-red  hover:bg-red" (click)="removeTask(i)">Remove</button>
+            </div>
+        </div>  
+    </div>
+
+</div>
