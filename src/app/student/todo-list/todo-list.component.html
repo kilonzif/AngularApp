@@ -1,42 +1,68 @@
-<!--Division for GeeksForGeeks heading-->
-<div class="container-fluid">
-	<div class="row bg-success justify-content-center
-			align-items-center" style="height:80px">
+
+
+
+
+<div class="container">
+	<div class="row bg-primary justify-content-center
+			align-items-center">
 		<div class="col-3"></div>
 		<div class="col-6 text-light h2">
 			TO-DO ListAPP
 		</div>
 	</div>
 
-	
-	<div class="row justify-content-center align-items-center" style="height:80px;">
-		<div class="col-3 d-none col-md-3 d-md-inline"></div>
-		<div class="col-12 ">
+    <div class="row">
+        <div class="card">
+            <form [formGroup]="newTodoForm" (ngSubmit)="addTask()">
+                <div class="row justify-content-center">
+                  <div class="col">
+                    <input type="text" ngModel type="text" formControlName="todoItem"
+                    value="" class="form-control" placeholder="Task Todo">
+                  </div>
+                  <div class="col">
+                    <button type="submit" class="btn btn-secondary mb-2">Add Task</button>
+                  </div>
+                </div>
+              </form>
+        </div>
+        
+    </div>
 
+
+
+	
+	<!-- <div class="row justify-content-center align-items-center" style="height:80px;">
+		<div class="col-3 d-none col-md-3 d-md-inline"></div>
+		
         <form [formGroup]="newTodoForm" (ngSubmit)="addTask()">
             <input ngModel type="text" formControlName="todoItem"
-                 value="" class="col-7"
-                     style="width:300px;">
+                 value="" class="col-7">
 			<div class="col-1"></div>
 			<button	class="btn btn-primary">
-				ADD TASK
+				ADD TASKs
 			</button>
          </form>
 
-			
-		</div>
-
 		<div class="col-3 d-none col-md-3 d-md-block"></div>
-	</div>
+	</div> -->
 
     <div class="row">
-        <div>
-            <div class="flex col-4 items-center" *ngFor= "let value of taskList">
-                <p class="w-full text-grey-darkest" [ngClass]="{'line-through': value.completed}">{{value.name}}</p>
-                <button
-                    class="flex-no-shrink p-2 col-4 mr-2 border-2 rounded  text-green border-green hover:bg-green" (click)="markDone(value)">Done</button>
-                <button
-                    class="flex-no-shrink p-2 col-2 border-2 rounded text-red border-red  hover:bg-red" (click)="removeTask(i)">Remove</button>
+        <div class="card">
+            <div  *ngFor= "let value of taskList">
+                <div class="col">
+                    <h2 class="col-6" [ngClass]="{'line-through': value.completed}">{{value.name}} </h2>
+
+                </div>
+               
+                <div class="col-6">
+                    <button
+                    type="button" class="btn btn-success"  (click)="markDone(value)">Mark as Done</button>
+                    <button type="button" class="btn" (click)="removeTask(i)" aria-label="Close" style="color: red;">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                </div>
+                  
+             
             </div>
         </div>  
     </div>

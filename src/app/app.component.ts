@@ -26,8 +26,18 @@ export class AppComponent {
   arr = ['Michelle','Cynthia','James'];
 
 
-  names: string[] = ["The","Names"];
+  goals: string[] = ["The","Names"];
 
   ages: number=24;
 
+  money:number=100;
+
+  today = Date.now();
+
+  oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+  firstDate:any = new Date(2022, 1, 1);
+  secondDate: any= Date.now();
+
+ diffDays = Math.round(Math.abs((this.firstDate - this.secondDate) / this.oneDay));
+ 
 }
